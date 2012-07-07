@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>pulse</title>
+	<link rel="stylesheet" href="noise.css">
+	<meta charset="UTF-8">
+</head>
+<body>
+<div class="pulse">
+	The current pulse is<br/>
+	<span id="pulse"></span><span id="subpulse"></span>
+</div>
+</body>
+
+<script type="text/javascript">
+
+function showPulse() {
+	var now = new Date();
+	var pulse = ( (now.getTime() / 1000) % 86400) / 86.4;
+	var subpulse = ( (pulse - Math.floor(pulse)) * 100).toFixed();
+
+	if (subpulse < 10) {
+		subpulse = "0" + subpulse;
+	}
+	/* looks like a rounding issue */
+	else if (subpulse == 100) {
+		pulse++;
+		subpulse = "00";
+	}
+
+	document.getElementById("pulse").innerHTML = Math.floor(pulse);
+	document.getElementById("subpulse").innerHTML = "." + subpulse;
+
+	var t = setTimeout('showPulse()', 864);
+}
+
+showPulse();
+
+</script>
+
+</html>

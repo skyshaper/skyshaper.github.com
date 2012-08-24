@@ -1,0 +1,11 @@
+div.image-container {
+	text-align: center;
+	font-size: 80%;
+	float: left;
+	width: 220px;
+	height: 220px;
+}
+
+div.image-container a {
+	text-decoration: none;
+}
